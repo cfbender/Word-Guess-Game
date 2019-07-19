@@ -49,135 +49,135 @@ let game = {
       link: "/Amine"
     },
     azide: {
-      image: " ",
+      image: "azide.png",
       link: "/Azide"
     },
     "alkyl halide": {
-      image: " ",
+      image: "alkylHalide.png",
       link: "/Haloalkane"
     },
     ether: {
-      image: " ",
+      image: "ether.png",
       link: "/Ether"
     },
     ester: {
-      image: " ",
+      image: "ester.png",
       link: "/Ester"
     },
     thiol: {
-      image: " ",
+      image: "thiol.png",
       link: "/Thiol"
     },
     thioether: {
-      image: " ",
+      image: "thioether.png",
       link: "/Thioether"
     },
     aldehyde: {
-      image: " ",
+      image: "aldehyde.png",
       link: "/Aldehyde"
     },
     ketone: {
-      image: " ",
+      image: "ketone.png",
       link: "/Ketone"
     },
     "carboxylic acid": {
-      image: " ",
+      image: "carboxylicAcid.png",
       link: "/Carboxylic_acid"
     },
     amide: {
-      image: " ",
+      image: "amide.png",
       link: "/Amide"
     },
     carbamate: {
-      image: " ",
+      image: "carbamate.png",
       link: "/Carbamate"
     },
     lactone: {
-      image: " ",
+      image: "lactone.png",
       link: "/Lactone"
     },
     "carbonate ester": {
-      image: " ",
+      image: "carbonateEster.png",
       link: "/Carbonate_ester"
     },
     urea: {
-      image: " ",
+      image: "urea.png",
       link: "/Urea"
     },
     hemiacetal: {
-      image: " ",
+      image: "hemiacetal.png",
       link: "/Hemiacetal"
     },
     acetal: {
-      image: " ",
+      image: "acetal.png",
       link: "/Acetal"
     },
     hemiketal: {
-      image: " ",
+      image: "hemiketal.png",
       link: "/Hemiketal"
     },
     ketal: {
-      image: " ",
+      image: "ketal.png",
       link: "/Ketal"
     },
     nitrile: {
-      image: " ",
+      image: "nitrile.png",
       link: "/Nitrile"
     },
     imine: {
-      image: " ",
+      image: "imine.png",
       link: "/Imine"
     },
     nitro: {
-      image: " ",
-      link: "/Nitro"
+      image: "nitro.png",
+      link: "/Nitro_compound"
     },
     enamine: {
-      image: " ",
+      image: "enamine.png",
       link: "/Enamine"
     },
     isocyanate: {
-      image: " ",
+      image: "isocyanate.png",
       link: "/Isocyanate"
     },
     aziridine: {
-      image: " ",
+      image: "aziridine.png",
       link: "/Aziridine"
     },
     carbodiimide: {
-      image: " ",
+      image: "carbodiimide.png",
       link: "/Carbodiimide"
     },
     hydrazine: {
-      image: " ",
+      image: "hydrazine.png",
       link: "/Hydrazine"
     },
     isothiocyanate: {
-      image: " ",
+      image: "isothiocyanate.png",
       link: "/Isothiocyanate"
     },
     disulfide: {
-      image: " ",
+      image: "disulfide.png",
       link: "/Disulfide"
     },
     sulfone: {
-      image: " ",
+      image: "sulfone.png",
       link: "/Sulfone"
     },
     thioamide: {
-      image: " ",
+      image: "thioamide.png",
       link: "/Thioamide"
     },
     "acid anhydride": {
-      image: " ",
-      link: "/Acid_anhydride"
+      image: "acidAnhydride.png",
+      link: "/Organic_acid_anhydride"
     },
     "acid chloride": {
-      image: " ",
+      image: "acidChloride.png",
       link: "/Acid_chloride"
     },
     epoxide: {
-      image: " ",
+      image: "epoxide.png",
       link: "/Epoxide"
     }
   },
@@ -208,6 +208,7 @@ let game = {
         ];
       console.log("www.wikipedia.com/wiki" + game.functionalGroups[game.secretWord].link);
       game.wikiLink.href = "https://www.wikipedia.com/wiki" + game.functionalGroups[game.secretWord].link;
+      game.funcGroupImage.src = "./assets/images/" + game.functionalGroups[game.secretWord].image;
       game.guessingArray = [];
       game.lettersGuessed = [];
       game.secretArray = [];
@@ -254,7 +255,7 @@ let game = {
     game.guessesLeft--;
     game.guessesLeftText.textContent = game.guessesLeft;
 
-    if (game.guessesLeft < 0 && !game.gameWin) {
+    if (game.guessesLeft <=0 && !game.gameWin) {
       game.gameEnd();
     } else {
       if (game.secretArray.includes(game.keyPressed)) {
@@ -305,10 +306,6 @@ let game = {
 
     return true;
   },
-
-  changeInfo() {
-
-  }
 };
 
 document.addEventListener("keyup", game.gameListen);
