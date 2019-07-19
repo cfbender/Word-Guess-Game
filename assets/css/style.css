@@ -12,11 +12,9 @@
 }
 
 .header-container {
-    position: absolute;
-    top: 20%;
-    left: 0;
     padding: 30px 15px 15px 15px;
     opacity: 0.8;
+    margin: 0 auto;
 }
 
 #group-picture {
