@@ -16,6 +16,10 @@ let game = {
 
   guesses: [],
 
+  links : {
+      alcohol: "wikipedia.com/aco"
+  },
+
   wordPossibilites: [
     "alcohol",
     "alkane",
@@ -82,9 +86,8 @@ let game = {
     if (!game.gameStart) {
       game.secretWord =
         game.wordPossibilites[
-          Math.floor(Math.random() * (game.wordPossibilites.length - 1))
+          Math.floor(Math.random() * (game.wordPossibilites.length - 1) +1)
         ];
-      game.guesses = [];
       game.guessingArray = [];
       game.lettersGuessed = [];
       game.secretArray = [];
@@ -140,7 +143,7 @@ let game = {
             game.guessingArray[i] = game.secretArray[i];
           }
         }
-        game.currentWord.textContent = game.guessingArray.join(" ");
+        game.currentWord.textContent = game.guessingArray.join("  ");
         if (game.arraysEqual(game.guessingArray, game.secretArray)) {
           game.gameWin = true;
           game.gameEnd();
@@ -155,6 +158,7 @@ let game = {
         game.primer.textContent = "Press any key to get started!";
       }, 2000);
       game.primer.textContent = "You Lose!";
+      game.currentWord.textContent = game.secretArray.join(" ")
     } else {
       setTimeout(function() {
         game.primer.textContent = "Press any key to get started!";
@@ -164,7 +168,7 @@ let game = {
       game.winsText.textContent = game.wins;
     }
 
-    game.guesses = [];
+    
     game.guessingArray = [];
     game.lettersGuessed = [];
     game.lettersGuessedText.textContent = "";

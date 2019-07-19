@@ -1,36 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Word Guess Game</title>
+
+<head>
+    <title>OChem Functional Group</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-  </head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-  <body>
-    <div id="app"></div>
-    <h1>Word Guess Game</h1>
+    <!-- Compiled and minified JavaScript -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <div id="game-container">
-      <div id="primer">Press any key to get started!</div>
+</head>
 
-      <div id="current-guessing"></div>
-
-      <div id="guesses-left-head">
-        Guesses left:
-        <div id="guesses-left">15</div>
-      </div>
-
-      <div id="letters-guessed-head">
-        Letters guesed:
-        <div id="letters-guessed">None!</div>
-      </div>
-
-      <div id="wins-head">
-        Wins:
-        <div id="wins">0</div>
-      </div>
-    </div>
+<body>
+           
+              <div id="index-banner" class="parallax-container">
+                <div class="section no-pad-bot">
+                  <div class="container">
+                    <br><br>
+                    <h1 class="header center teal-text text-lighten-2">Word Guess Game</h1>
+                    <br><br>            
+                  </div>
+                </div>
+                <div class="parallax"><img src="./assets/images/glassware.png" alt="Unsplashed background img 1" style="transform: translate3d(-50%, 200.783px, 0px); opacity: 1;"></div>
+              </div>
+            
+            
+              <div class="container">
+                <div class="section">
+                  <div class="row">
+                        <div class="row center">
+                                <div class="col l6">
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <img id="group-image" class="responsive-img" src="">
+                                        </div>
+                                        <div class="card-content">
+                                            <p>butcher mustache Cosby sweater DIY leggings paleo Carles post-ironic wayfarers tofu
+                                                semiotics Intelligentsia umami farm-to-table YOLO iPhone gluten-free lomo narwhal
+                                                meggings 8-bit letterpress kale chips </p>
+                                        </div>
+                                        <div class="card-action">
+                                            <a href="#">link to wiki</a>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col l6">
+                                    <div id="primer-contaienr">
+                                        <h5 id="primer">Press any key to get started!</h5>
+                                    </div>
+                
+                                    <div id="guessing-container">
+                                        <h6 id="current-guessing"></h6>
+                                    </div>
+                
+                                    <div id="guesses-container">
+                                        <h5 id="guesses-left-head">Guesses left:</h2>
+                                            <div id="guesses-left-container">
+                                                <h6 id="guesses-left">15</h6>
+                                            </div>
+                                    </div>
+                
+                                    <div id="letters-guessed-head">
+                                        <h5>Letters guesed:</h5>
+                                        <div id="letters-guessed-container">
+                                            <p id="letters-guessed">None!</p>
+                                        </div>
+                                    </div>
+                
+                                    <div id="wins-head">
+                                        <h5>Wins:</h5>
+                                        <div id="wins">0</div>
+                                    </div>
+                                </div>
+                
+                            </div>
+                  </div>
+            
+                </div>
+              </div>
+            
+            
+              
+            
+              <footer class="page-footer teal">
+                <div class="footer-copyright">
+                  <div class="container">
+                  Made by <a class="brown-text text-lighten-3" href="http://github.com/cfbender">Cody Bender</a>
+                  </div>
+                </div>
+              </footer>
+    
     <script src="./assets/javascript/game.js"></script>
-  </body>
+</body>
+
 </html>
