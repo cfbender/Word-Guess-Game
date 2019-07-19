@@ -10,65 +10,183 @@ let game = {
 
   winsText: document.getElementById("wins"),
 
+  funcGroupImage: document.getElementById("group-picture"),
+
+  wikiLink: document.getElementById("wiki-link"),
   //game variable declaration
 
   gameStart: false,
 
   guesses: [],
 
-  links : {
-      alcohol: "wikipedia.com/aco"
+  links: {
+    alcohol: "wikipedia.com/aco"
   },
 
-  wordPossibilites: [
-    "alcohol",
-    "alkane",
-    "alkene",
-    "alkyne",
-    "phenyl",
-    "amine",
-    "azide",
-    "alkyl halide",
-    "ether",
-    "ester",
-    "thiol",
-    "thiother",
-    "aldehyde",
-    "ketone",
-    "carboxylic acid",
-    "amide",
-    "carbamate",
-    "lactone",
-    "carbonate ester",
-    "urea",
-    "hemiacetal",
-    "acetal",
-    "hemiketal",
-    "ketal",
-    "nitrile",
-    "imine",
-    "nitro",
-    "enamine",
-    "isocyanate",
-    "aziridine",
-    "carbodiimide",
-    "hydrazine",
-    "isothiocyanate",
-    "disulfide",
-    "sulfone",
-    "thioamide",
-    "acid anhydride",
-    "acid chloride",
-    "epoxide"
-  ],
+  functionalGroups: {
+    alcohol: {
+      image: "alcohol.png",
+      link: "/Alcohol"
+    },
+    alkane: {
+      image: "alkane.png",
+      link: "/Alkane"
+    },
+    alkene: {
+      image: "alkene.png",
+      link: "/Alkene"
+    },
+    alkyne: {
+      image: "alkyne.png",
+      link: "/Alkyne"
+    },
+    phenyl: {
+      image: "phenyl.png",
+      link: "/Phenyl"
+    },
+    amine: {
+      image: "amine.png",
+      link: "/Amine"
+    },
+    azide: {
+      image: " ",
+      link: "/Azide"
+    },
+    "alkyl halide": {
+      image: " ",
+      link: "/Haloalkane"
+    },
+    ether: {
+      image: " ",
+      link: "/Ether"
+    },
+    ester: {
+      image: " ",
+      link: "/Ester"
+    },
+    thiol: {
+      image: " ",
+      link: "/Thiol"
+    },
+    thioether: {
+      image: " ",
+      link: "/Thioether"
+    },
+    aldehyde: {
+      image: " ",
+      link: "/Aldehyde"
+    },
+    ketone: {
+      image: " ",
+      link: "/Ketone"
+    },
+    "carboxylic acid": {
+      image: " ",
+      link: "/Carboxylic_acid"
+    },
+    amide: {
+      image: " ",
+      link: "/Amide"
+    },
+    carbamate: {
+      image: " ",
+      link: "/Carbamate"
+    },
+    lactone: {
+      image: " ",
+      link: "/Lactone"
+    },
+    "carbonate ester": {
+      image: " ",
+      link: "/Carbonate_ester"
+    },
+    urea: {
+      image: " ",
+      link: "/Urea"
+    },
+    hemiacetal: {
+      image: " ",
+      link: "/Hemiacetal"
+    },
+    acetal: {
+      image: " ",
+      link: "/Acetal"
+    },
+    hemiketal: {
+      image: " ",
+      link: "/Hemiketal"
+    },
+    ketal: {
+      image: " ",
+      link: "/Ketal"
+    },
+    nitrile: {
+      image: " ",
+      link: "/Nitrile"
+    },
+    imine: {
+      image: " ",
+      link: "/Imine"
+    },
+    nitro: {
+      image: " ",
+      link: "/Nitro"
+    },
+    enamine: {
+      image: " ",
+      link: "/Enamine"
+    },
+    isocyanate: {
+      image: " ",
+      link: "/Isocyanate"
+    },
+    aziridine: {
+      image: " ",
+      link: "/Aziridine"
+    },
+    carbodiimide: {
+      image: " ",
+      link: "/Carbodiimide"
+    },
+    hydrazine: {
+      image: " ",
+      link: "/Hydrazine"
+    },
+    isothiocyanate: {
+      image: " ",
+      link: "/Isothiocyanate"
+    },
+    disulfide: {
+      image: " ",
+      link: "/Disulfide"
+    },
+    sulfone: {
+      image: " ",
+      link: "/Sulfone"
+    },
+    thioamide: {
+      image: " ",
+      link: "/Thioamide"
+    },
+    "acid anhydride": {
+      image: " ",
+      link: "/Acid_anhydride"
+    },
+    "acid chloride": {
+      image: " ",
+      link: "/Acid_chloride"
+    },
+    epoxide: {
+      image: " ",
+      link: "/Epoxide"
+    }
+  },
 
   secretWord: "secret",
 
   secretArray: [],
 
   guessingArray: [],
-
-  guessLimit: 10,
 
   guessesLeft: 0,
 
@@ -85,15 +203,17 @@ let game = {
   gameInit() {
     if (!game.gameStart) {
       game.secretWord =
-        game.wordPossibilites[
-          Math.floor(Math.random() * (game.wordPossibilites.length - 1) +1)
+        Object.keys(game.functionalGroups)[
+          Math.floor(Math.random() * (Object.keys(game.functionalGroups).length - 1) + 1)
         ];
+      console.log("www.wikipedia.com/wiki" + game.functionalGroups[game.secretWord].link);
+      game.wikiLink.href = "https://www.wikipedia.com/wiki" + game.functionalGroups[game.secretWord].link;
       game.guessingArray = [];
       game.lettersGuessed = [];
       game.secretArray = [];
       game.lettersGuessedText.textContent = "";
-      game.guessesLeftText.textContent = game.guessLimit;
-      game.guessesLeft = game.guessLimit;
+      game.guessesLeftText.textContent = game.secretWord.length + 8;
+      game.guessesLeft = game.secretWord.length + 8;
       game.primer.textContent = "";
       game.blankGenerator(game.secretWord);
       game.currentWord.textContent = game.guessingArray.join(" ");
@@ -134,7 +254,7 @@ let game = {
     game.guessesLeft--;
     game.guessesLeftText.textContent = game.guessesLeft;
 
-    if (game.guessesLeft <= 0 && !game.gameWin) {
+    if (game.guessesLeft < 0 && !game.gameWin) {
       game.gameEnd();
     } else {
       if (game.secretArray.includes(game.keyPressed)) {
@@ -154,13 +274,13 @@ let game = {
 
   gameEnd() {
     if (!game.gameWin) {
-      setTimeout(function() {
+      setTimeout(function () {
         game.primer.textContent = "Press any key to get started!";
       }, 2000);
       game.primer.textContent = "You Lose!";
       game.currentWord.textContent = game.secretArray.join(" ")
     } else {
-      setTimeout(function() {
+      setTimeout(function () {
         game.primer.textContent = "Press any key to get started!";
       }, 2000);
       game.primer.textContent = "You Win!";
@@ -168,7 +288,7 @@ let game = {
       game.winsText.textContent = game.wins;
     }
 
-    
+
     game.guessingArray = [];
     game.lettersGuessed = [];
     game.lettersGuessedText.textContent = "";
@@ -179,11 +299,15 @@ let game = {
 
   arraysEqual(arr1, arr2) {
     if (arr1.length !== arr2.length) return false;
-    for (var i = arr1.length; i--; ) {
+    for (var i = arr1.length; i--;) {
       if (arr1[i] !== arr2[i]) return false;
     }
 
     return true;
+  },
+
+  changeInfo() {
+
   }
 };
 
