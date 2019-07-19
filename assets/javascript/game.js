@@ -206,7 +206,6 @@ let game = {
         Object.keys(game.functionalGroups)[
           Math.floor(Math.random() * (Object.keys(game.functionalGroups).length - 1) + 1)
         ];
-      console.log("www.wikipedia.com/wiki" + game.functionalGroups[game.secretWord].link);
       game.wikiLink.href = "https://www.wikipedia.com/wiki" + game.functionalGroups[game.secretWord].link;
       game.funcGroupImage.src = "./assets/images/" + game.functionalGroups[game.secretWord].image;
       game.guessingArray = [];
