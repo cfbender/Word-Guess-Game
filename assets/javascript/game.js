@@ -217,7 +217,6 @@ let game = {
       game.primer.textContent = "";
       game.blankGenerator(game.secretWord);
       game.currentWord.textContent = game.guessingArray.join(" ");
-      game.gameStart = true;
     }
   },
 
@@ -237,6 +236,10 @@ let game = {
 
   gameListen(event) {
     game.gameInit();
+    if (!game.gameStart) {
+      game.gameStart = true;
+      return 0;
+    } 
     game.keyPressed = event.key.toLowerCase();
     if (game.keyPressed.length !== 1) {
       return;
@@ -250,27 +253,27 @@ let game = {
     }
   },
 
-  gameUpdate() {
-    game.guessesLeft--;
-    game.guessesLeftText.textContent = game.guessesLeft;
+  gameUpdate() {  
+      game.guessesLeft--;
+      game.guessesLeftText.textContent = game.guessesLeft;
 
-    if (game.guessesLeft <=0 && !game.gameWin) {
-      game.gameEnd();
-    } else {
-      if (game.secretArray.includes(game.keyPressed)) {
-        for (let i = 0; i < game.guessingArray.length; i++) {
-          if (game.secretArray[i] === game.keyPressed) {
-            game.guessingArray[i] = game.secretArray[i];
+      if (game.guessesLeft <=0 && !game.gameWin) {
+        game.gameEnd();
+      } else {
+        if (game.secretArray.includes(game.keyPressed)) {
+          for (let i = 0; i < game.guessingArray.length; i++) {
+            if (game.secretArray[i] === game.keyPressed) {
+              game.guessingArray[i] = game.secretArray[i];
+            }
+          }
+          game.currentWord.textContent = game.guessingArray.join("  ");
+          if (game.arraysEqual(game.guessingArray, game.secretArray)) {
+            game.gameWin = true;
+            game.gameEnd();
           }
         }
-        game.currentWord.textContent = game.guessingArray.join("  ");
-        if (game.arraysEqual(game.guessingArray, game.secretArray)) {
-          game.gameWin = true;
-          game.gameEnd();
-        }
       }
-    }
-  },
+    },
 
   gameEnd() {
     if (!game.gameWin) {
