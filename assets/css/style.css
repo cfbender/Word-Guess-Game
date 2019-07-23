@@ -1,20 +1,35 @@
+body {
+    background-image: url("../images/glassware.png");
+}
+
+#wiki-link {
+    color: black;
+}
+#game-container {
+    background: rgba(255, 255, 255, 0.5);
+    max-width: 800px;
+    border: solid 1px lightgray;
+    border-radius: 25px;
+    padding: 25px;
+    margin: 0 auto;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
 .header-container {
     min-height: 150px;
     max-height: 400px;
     line-height: 0;
     height: auto;
     color: rgba(255,255,255,.9);
+    padding: 15px;
+    opacity: 1;
+    margin: 0 auto;
 }
 
 
 #current-guessing {
     font-size:  2em;
-}
-
-.header-container {
-    padding: 30px 15px 15px 15px;
-    opacity: 0.8;
-    margin: 0 auto;
 }
 
 #group-picture {
