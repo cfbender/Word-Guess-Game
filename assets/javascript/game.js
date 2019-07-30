@@ -244,9 +244,9 @@ let game = {
     if (game.keyPressed.length !== 1) {
       return;
     }
-    if (/^[a-z]$/i.test(event.key)) {
-      if (!game.lettersGuessed.includes(event.key)) {
-        game.lettersGuessed.push(event.key);
+    if (/^[a-z]$/i.test(game.keyPressed)) {
+      if (!game.lettersGuessed.includes(game.keyPressed)) {
+        game.lettersGuessed.push(game.keyPressed);
         game.lettersGuessedText.textContent = game.lettersGuessed.join(", ");
         game.gameUpdate();
       }
