@@ -269,6 +269,16 @@ let game = {
       game.guessesLeft--;
       game.guessesLeftText.textContent = game.guessesLeft;
 
+      //update guesses if letter is in secret word
+      if (game.secretArray.includes(game.keyPressed)) {
+        for (let i = 0; i < game.guessingArray.length; i++) {
+          if (game.secretArray[i] === game.keyPressed) {
+            game.guessingArray[i] = game.secretArray[i];
+          }
+        }
+        game.currentWord.textContent = game.guessingArray.join("  ");
+      }
+
       //first check if you won
       if (game.arraysEqual(game.guessingArray, game.secretArray)) {
         game.gameWin = true;
@@ -277,17 +287,7 @@ let game = {
       //then if you have no guesses left, end the game
       if (game.guessesLeft <=0 && !game.gameWin) {
         game.gameEnd();
-      } else {
-        //otherwise update the array if you pressed a key in the word
-        if (game.secretArray.includes(game.keyPressed)) {
-          for (let i = 0; i < game.guessingArray.length; i++) {
-            if (game.secretArray[i] === game.keyPressed) {
-              game.guessingArray[i] = game.secretArray[i];
-            }
-          }
-          game.currentWord.textContent = game.guessingArray.join("  ");
-        }
-      }
+      } 
     },
 
   gameEnd() {
