@@ -202,29 +202,37 @@ let game = {
 
   gameInit() {
     if (!game.gameStart) {
+      //select random word from possibilities
       game.secretWord =
         Object.keys(game.functionalGroups)[
           Math.floor(Math.random() * (Object.keys(game.functionalGroups).length - 1) + 1)
         ];
+        //generate wiki link and image
       game.wikiLink.href = "https://www.wikipedia.com/wiki" + game.functionalGroups[game.secretWord].link;
       game.funcGroupImage.src = "./assets/images/" + game.functionalGroups[game.secretWord].image;
+      //initialize arrays to hold letters
       game.guessingArray = [];
       game.lettersGuessed = [];
       game.secretArray = [];
+      //wipe html for letters guessed
       game.lettersGuessedText.textContent = "";
-      game.guessesLeftText.textContent = game.secretWord.length + 8;
-      game.guessesLeft = game.secretWord.length + 8;
+      //reset number of guesses left
+      game.guessesLeftText.textContent = game.secretWord.length + 6;
+      game.guessesLeft = game.secretWord.length + 6;
       game.primer.textContent = "";
+      //generate blanks for the length of the word
       game.blankGenerator(game.secretWord);
+      //put the blanks on the screen
       game.currentWord.textContent = game.guessingArray.join(" ");
     }
   },
 
   blankGenerator(string) {
     for (let v of string) {
+      //push letters of secret word into an array
       game.secretArray.push(v);
     }
-
+      //then generate blanks of the same length
     for (let w of string) {
       if (w === " ") {
         game.guessingArray.push(" ");
@@ -241,11 +249,14 @@ let game = {
       return 0;
     } 
     game.keyPressed = event.key.toLowerCase();
+    // only let through single character key presses (still lets in symbols and 0-9)
     if (game.keyPressed.length !== 1) {
       return;
     }
+    //test if the character is a-z
     if (/^[a-z]$/i.test(game.keyPressed)) {
       if (!game.lettersGuessed.includes(game.keyPressed)) {
+        //if it was a-z and hadn't been pressed before, add it to letters guessed and update the game
         game.lettersGuessed.push(game.keyPressed);
         game.lettersGuessedText.textContent = game.lettersGuessed.join(", ");
         game.gameUpdate();
@@ -254,12 +265,20 @@ let game = {
   },
 
   gameUpdate() {  
+    //decrement guesses left and update the screen
       game.guessesLeft--;
       game.guessesLeftText.textContent = game.guessesLeft;
 
+      //first check if you won
+      if (game.arraysEqual(game.guessingArray, game.secretArray)) {
+        game.gameWin = true;
+        game.gameEnd();
+      }
+      //then if you have no guesses left, end the game
       if (game.guessesLeft <=0 && !game.gameWin) {
         game.gameEnd();
       } else {
+        //otherwise update the array if you pressed a key in the word
         if (game.secretArray.includes(game.keyPressed)) {
           for (let i = 0; i < game.guessingArray.length; i++) {
             if (game.secretArray[i] === game.keyPressed) {
@@ -267,10 +286,6 @@ let game = {
             }
           }
           game.currentWord.textContent = game.guessingArray.join("  ");
-          if (game.arraysEqual(game.guessingArray, game.secretArray)) {
-            game.gameWin = true;
-            game.gameEnd();
-          }
         }
       }
     },
@@ -300,6 +315,7 @@ let game = {
     game.gameStart = false;
   },
 
+  //checks if 2 arrays are equal
   arraysEqual(arr1, arr2) {
     if (arr1.length !== arr2.length) return false;
     for (var i = arr1.length; i--;) {
